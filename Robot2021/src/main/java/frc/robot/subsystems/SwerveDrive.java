@@ -3,9 +3,9 @@ package frc.robot.subsystems;
 import frc.robot.*;
 
 public class SwerveDrive {
-    //Length between each wheel & width
-    public final double L = 0.0;
-    public final double W = 0.0;
+    //Length & width between each wheel
+    public final double L = 50.9;
+    public final double W = 54.9;
     private WheelDrive backRight;
     private WheelDrive backLeft;
     private WheelDrive frontRight;
