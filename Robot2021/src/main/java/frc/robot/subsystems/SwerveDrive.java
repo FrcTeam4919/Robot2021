@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-import frc.robot.*;
-
 public class SwerveDrive {
     //Length & width between each wheel
     public final double L = 50.9;
