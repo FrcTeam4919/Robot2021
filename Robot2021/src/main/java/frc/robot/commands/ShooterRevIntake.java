@@ -1,11 +1,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.*;
 
-public class ShooterIntake extends Command{
+public class ShooterRevIntake extends Command{
     private boolean isFinished = false;
-    public ShooterIntake(){
+    public ShooterRevIntake(){
     }
 
     @Override
@@ -16,14 +16,14 @@ public class ShooterIntake extends Command{
 
     @Override
     protected void execute() {
-        Intake.succ();
+        Intake.unsucc();
     }
 
     @Override
     protected void end() {
         Intake.stop();
     }
-    public ShooterIntake Stop() {
+    public ShooterRevIntake Stop() {
         isFinished = true;
         return this;
     }

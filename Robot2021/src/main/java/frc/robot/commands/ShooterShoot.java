@@ -1,22 +1,30 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ShooterShoot {
-    private static VictorSP shoot;
-
+public class ShooterShoot extends Command {
+    private boolean isFinished = false;
     public ShooterShoot(){
-        shoot = new VictorSP(13);
     }
 
-    public static Command shoot(){
-        shoot.set(1.0);
-        return null;
+    @Override
+    protected boolean isFinished() {
+        // TODO Auto-generated method stub
+        return isFinished;
     }
 
-    public static Command cease(){
-        shoot.set(0.0);
-        return null;
+    @Override
+    protected void execute() {
+        Shooter.shoot();
+    }
+
+    @Override
+    protected void end() {
+        Shooter.stopS();
+    }
+    public ShooterShoot Stop() {
+        isFinished = true;
+        return this;
     }
 }

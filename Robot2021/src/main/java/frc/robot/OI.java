@@ -59,6 +59,8 @@ public class OI {
     public JoystickButton Succ;
     public JoystickButton Unsucc;
     public JoystickButton Shoot;
+    public JoystickButton ShooterBlock;
+    public JoystickButton ShooterUnblock;
     public JoystickButton LimelightSeek;
     public JoystickButton LimelightAim;
 
@@ -69,16 +71,34 @@ public class OI {
 
         joystick = new Joystick(0);
         buttonBoard = new Joystick(1);
+
         TowerExtend = new JoystickButton(buttonBoard, 1);
-        TowerExtend.whileHeld(frc.robot.commands.TowerExtend.Extend());
+        TowerExtend.whileHeld(new TowerE());
+        TowerExtend.whenReleased(new TowerE().Stop());
+
         TowerRetract = new JoystickButton(buttonBoard, 2);
-        TowerRetract.whileHeld(frc.robot.commands.TowerRetract.Retract());
+        TowerRetract.whileHeld(new TowerR());
+        TowerRetract.whenReleased(new TowerR().Stop());
+
         Shoot = new JoystickButton(buttonBoard, 3);
-        Shoot.whileHeld(frc.robot.commands.ShooterShoot.shoot());
-        Succ = new JoystickButton(buttonBoard, 4);
-        Succ.whileHeld(frc.robot.commands.ShooterIntake.succ());
-        Unsucc = new JoystickButton(buttonBoard, 5);
-        Unsucc.whileHeld(frc.robot.commands.ShooterIntake.unsucc());
+        Shoot.whileHeld(new ShooterShoot());
+        Shoot.whenReleased(new ShooterShoot().Stop());
+
+        ShooterBlock = new JoystickButton(buttonBoard, 4);
+        ShooterBlock.whileHeld(new ShooterBlock());
+        ShooterBlock.whenReleased(new ShooterBlock().Stop());
+
+        ShooterUnblock = new JoystickButton(buttonBoard, 5);
+        ShooterUnblock.whileHeld(new ShooterUnblock());
+        ShooterUnblock.whenReleased(new ShooterUnblock().Stop());
+
+        Succ = new JoystickButton(buttonBoard, 6);
+        Succ.whileHeld(new ShooterIntake());
+        Succ.whenReleased(new ShooterIntake().Stop());
+
+        Unsucc = new JoystickButton(buttonBoard, 7);
+        Unsucc.whileHeld(new ShooterRevIntake());
+        Unsucc.whenReleased(new ShooterRevIntake().Stop());
 
 
         // SmartDashboard Buttons
