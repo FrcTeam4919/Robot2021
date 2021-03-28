@@ -120,6 +120,9 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        swerveDrive.drive(OI.joystick.getRawAxis(0), OI.joystick.getRawAxis(1), OI.joystick.getRawAxis(2));
+        double x = OI.joystick.getRawAxis(0);
+        double y = OI.joystick.getRawAxis(1);
+        double z = OI.joystick.getRawAxis(2);
+        swerveDrive.drive(x, y, z);
     }
 }
