@@ -5,9 +5,13 @@ import frc.robot.subsystems.*;
 
 public class ShooterRevIntake extends Command{
     private boolean isFinished = false;
+    private Intake intake;
     public ShooterRevIntake(){
     }
-
+    @Override
+    protected void initialize(){
+        intake = new Intake();
+    }
     @Override
     protected boolean isFinished() {
         // TODO Auto-generated method stub
@@ -16,12 +20,12 @@ public class ShooterRevIntake extends Command{
 
     @Override
     protected void execute() {
-        Intake.unsucc();
+        intake.unsucc();
     }
 
     @Override
     protected void end() {
-        Intake.stop();
+        intake.stop();
     }
     public ShooterRevIntake Stop() {
         isFinished = true;

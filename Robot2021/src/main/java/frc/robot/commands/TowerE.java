@@ -5,16 +5,17 @@ import frc.robot.subsystems.*;
 
 public class TowerE extends Command {
     private boolean isFinished = false;
+    private TowerExtend towerExtend;
     public TowerE(){
     }
 
     @Override
     protected void initialize() {
-
+        towerExtend = new TowerExtend();
     }
     @Override
     protected void execute() {
-        TowerExtend.extend();
+        towerExtend.extend();
     }
 
     @Override
@@ -25,7 +26,7 @@ public class TowerE extends Command {
 
     @Override
     protected void end() {
-        TowerExtend.stop();
+        towerExtend.stop();
     }
     public TowerE Stop() {
         isFinished = true;

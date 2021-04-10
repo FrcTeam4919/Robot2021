@@ -5,7 +5,12 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ShooterShoot extends Command {
     private boolean isFinished = false;
+    private Shooter shooter;
     public ShooterShoot(){
+    }
+    @Override
+    protected void initialize(){
+        shooter = new Shooter();
     }
 
     @Override
@@ -16,12 +21,12 @@ public class ShooterShoot extends Command {
 
     @Override
     protected void execute() {
-        Shooter.shoot();
+        shooter.shoot();
     }
 
     @Override
     protected void end() {
-        Shooter.stopS();
+        shooter.stopS();
     }
     public ShooterShoot Stop() {
         isFinished = true;

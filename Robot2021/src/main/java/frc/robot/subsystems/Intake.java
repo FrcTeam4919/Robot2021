@@ -22,15 +22,15 @@ public class Intake extends Subsystem {
 
     }
 
-    public static void succ() {
+    public void succ() {
         intake.set(VictorSPXControlMode.PercentOutput, 1.0);
     }
 
-    public static void stop() {
+    public void stop() {
         intake.set(VictorSPXControlMode.PercentOutput, 0.0);
     }
 
-    public static void unsucc() {
+    public void unsucc() {
         intake.set(VictorSPXControlMode.PercentOutput, -1.0);
     }
 }

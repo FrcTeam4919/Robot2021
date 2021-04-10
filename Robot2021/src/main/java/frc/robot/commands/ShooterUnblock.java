@@ -5,12 +5,17 @@ import frc.robot.subsystems.*;
 
 public class ShooterUnblock extends Command{
     private boolean isFinished = false;
+    private Shooter shooter;
     public ShooterUnblock(){
     }
 
     @Override
+    protected void initialize(){
+        shooter = new Shooter();
+    }
+    @Override
     protected void execute() {
-        Shooter.unblock();
+        shooter.unblock();
     }
 
     @Override
@@ -21,7 +26,7 @@ public class ShooterUnblock extends Command{
 
     @Override
     protected void end() {
-        Shooter.blockS();
+        shooter.blockS();
     }
 
     public ShooterUnblock Stop() {

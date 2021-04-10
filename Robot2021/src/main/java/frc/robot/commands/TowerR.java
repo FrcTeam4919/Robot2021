@@ -5,12 +5,18 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class TowerR extends Command{
     private boolean isFinished = false;
+    private TowerRetract towerRetract;
     public TowerR(){
     }
 
     @Override
+    protected void initialize(){
+        towerRetract = new TowerRetract();
+    }
+
+    @Override
     protected void execute() {
-        TowerRetract.retract();
+        towerRetract.retract();
     }
 
     @Override
@@ -21,7 +27,7 @@ public class TowerR extends Command{
 
     @Override
     protected void end() {
-        TowerRetract.stop();
+        towerRetract.stop();
     }
     public TowerR Stop() {
         isFinished=true;
