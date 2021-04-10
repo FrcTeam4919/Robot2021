@@ -1,14 +1,14 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 
 public class Intake extends Subsystem {
-    private static VictorSP intake;
+    private static VictorSPX intake;
 
     public Intake() {
-        intake = new VictorSP(0);
-        addChild("intake", intake);
+        intake = new VictorSPX(0);
     }
 
     @Override
@@ -23,14 +23,14 @@ public class Intake extends Subsystem {
     }
 
     public static void succ() {
-        intake.setSpeed(1.0);
+        intake.set(VictorSPXControlMode.PercentOutput, 1.0);
     }
 
     public static void stop() {
-        intake.setSpeed(0.0);
+        intake.set(VictorSPXControlMode.PercentOutput, 0.0);
     }
 
     public static void unsucc() {
-        intake.setSpeed(-1.0);
+        intake.set(VictorSPXControlMode.PercentOutput, -1.0);
     }
 }

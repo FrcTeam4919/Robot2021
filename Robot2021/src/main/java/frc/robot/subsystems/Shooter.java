@@ -1,17 +1,19 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Encoder;
 
+import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 public class Shooter extends Subsystem {
-    private static VictorSP shooterBlocker;
+    public static VictorSPX shooterBlocker;
     private static Encoder blockerEncoder;
-    private static VictorSP shooter;
+    private static VictorSPX shooter;
 
     public Shooter() {
-        shooter = new VictorSP(13);
-        shooterBlocker = new VictorSP(14);
+        shooter = new VictorSPX(13);
+        shooterBlocker = new VictorSPX(14);
         blockerEncoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
     }
 
@@ -27,34 +29,34 @@ public class Shooter extends Subsystem {
     }
 
     public static void shoot() {
-        shooter.setSpeed(1.0);
+        shooter.set(VictorSPXControlMode.PercentOutput, 1.0);
     }
 
     public static void stopS() {
-        shooter.setSpeed(0.0);
+        shooter.set(VictorSPXControlMode.PercentOutput, 0.0);
     }
 
     public void shootReverse() {
-        shooter.setSpeed(-1.0);
+        shooter.set(VictorSPXControlMode.PercentOutput, -1.0);
     }
     
     public static void block() {
         if (blockerEncoder.getDistance() < 0.25){
-            shooterBlocker.setSpeed(0.1);
+            shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.1);
         } else {
-            shooterBlocker.setSpeed(0.0);
+            shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
         }
     }
 
     public static void unblock() {
         if (blockerEncoder.getDistance() > 0){
-            shooterBlocker.setSpeed(-0.1);
+            shooterBlocker.set(VictorSPXControlMode.PercentOutput, -0.1);
         } else {
-            shooterBlocker.setSpeed(0.0);
+            shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
         }
     }
 
     public static void blockS() {
-        shooterBlocker.setSpeed(0.0);
+        shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
     }
 }
