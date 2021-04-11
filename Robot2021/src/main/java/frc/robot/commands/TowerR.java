@@ -2,21 +2,22 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class TowerR extends Command{
     private boolean isFinished = false;
-    private TowerRetract towerRetract;
     public TowerR(){
+        requires(Robot.towerRetract);
     }
 
     @Override
     protected void initialize(){
-        towerRetract = new TowerRetract();
+        System.out.println("Retracting");
     }
 
     @Override
     protected void execute() {
-        towerRetract.retract();
+        Robot.towerRetract.retract();
     }
 
     @Override
@@ -27,7 +28,7 @@ public class TowerR extends Command{
 
     @Override
     protected void end() {
-        towerRetract.stop();
+        Robot.towerRetract.stop();
     }
     public TowerR Stop() {
         isFinished=true;

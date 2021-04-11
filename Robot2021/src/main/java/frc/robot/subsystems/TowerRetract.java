@@ -26,13 +26,13 @@ public class TowerRetract extends Subsystem {
     }
 
     public void retract() {
-        towerRetractA.set(-1.0);
-        towerRetractB.set(-1.0);
+        towerRetractA.setSpeed(-1.0);
+        towerRetractB.setSpeed(-1.0);
     }
 
     public void stop(){
-        towerRetractA.set(0.0);
-        towerRetractB.set(0.0);
+        towerRetractA.setSpeed(0.0);
+        towerRetractB.setSpeed(0.0);
     }
     
 }

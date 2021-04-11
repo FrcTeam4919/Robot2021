@@ -2,20 +2,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.*;
+import frc.robot.Robot;
 
 public class TowerE extends Command {
     private boolean isFinished = false;
-    private TowerExtend towerExtend;
     public TowerE(){
+        requires(Robot.towerExtend);
     }
 
     @Override
     protected void initialize() {
-        towerExtend = new TowerExtend();
+        System.out.println("Extending");
     }
     @Override
     protected void execute() {
-        towerExtend.extend();
+        Robot.towerExtend.extend();
     }
 
     @Override
@@ -26,7 +27,7 @@ public class TowerE extends Command {
 
     @Override
     protected void end() {
-        towerExtend.stop();
+        Robot.towerExtend.stop();
     }
     public TowerE Stop() {
         isFinished = true;

@@ -2,19 +2,20 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.*;
+import frc.robot.Robot;
 
 public class ShooterBlock extends Command{
     private boolean isFinished = false;
-    private Shooter shooter;
     public ShooterBlock(){
+        requires(Robot.shooter);
     }
     @Override
     protected void initialize(){
-        shooter = new Shooter();
+        System.out.println("Blocking");
     }
     @Override
     protected void execute() {
-        shooter.block();
+        Robot.shooter.block();
     }
 
     @Override
@@ -25,7 +26,7 @@ public class ShooterBlock extends Command{
 
     @Override
     protected void end() {
-        shooter.blockS();
+        Robot.shooter.blockS();
     }
 
     public ShooterBlock Stop() {

@@ -24,8 +24,8 @@ public class TowerExtend extends Subsystem {
     }
 
     public void extend() {
-        towerExtendA.set(1.0);
-        towerExtendB.set(1.0);
+        towerExtendA.setSpeed(1.0);
+        towerExtendB.setSpeed(1.0);
     }
 
     public void stop() {

@@ -2,15 +2,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.*;
+import frc.robot.Robot;
 
 public class ShooterRevIntake extends Command{
     private boolean isFinished = false;
-    private Intake intake;
     public ShooterRevIntake(){
+        requires(Robot.intake);
     }
     @Override
     protected void initialize(){
-        intake = new Intake();
+        System.out.println("Reversing Intake");
     }
     @Override
     protected boolean isFinished() {
@@ -20,12 +21,12 @@ public class ShooterRevIntake extends Command{
 
     @Override
     protected void execute() {
-        intake.unsucc();
+        Robot.intake.unsucc();
     }
 
     @Override
     protected void end() {
-        intake.stop();
+        Robot.intake.stop();
     }
     public ShooterRevIntake Stop() {
         isFinished = true;

@@ -2,20 +2,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.*;
+import frc.robot.Robot;
 
 public class ShooterUnblock extends Command{
     private boolean isFinished = false;
-    private Shooter shooter;
     public ShooterUnblock(){
+        requires(Robot.shooter);
     }
 
     @Override
     protected void initialize(){
-        shooter = new Shooter();
+        System.out.println("Unblocking");
     }
     @Override
     protected void execute() {
-        shooter.unblock();
+        Robot.shooter.unblock();
     }
 
     @Override
@@ -26,7 +27,7 @@ public class ShooterUnblock extends Command{
 
     @Override
     protected void end() {
-        shooter.blockS();
+        Robot.shooter.blockS();
     }
 
     public ShooterUnblock Stop() {

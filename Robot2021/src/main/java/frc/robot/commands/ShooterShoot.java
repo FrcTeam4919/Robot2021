@@ -2,15 +2,16 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class ShooterShoot extends Command {
     private boolean isFinished = false;
-    private Shooter shooter;
     public ShooterShoot(){
+        requires(Robot.shooter);
     }
     @Override
     protected void initialize(){
-        shooter = new Shooter();
+        System.out.println("Shooting");
     }
 
     @Override
@@ -21,12 +22,12 @@ public class ShooterShoot extends Command {
 
     @Override
     protected void execute() {
-        shooter.shoot();
+        Robot.shooter.shoot();
     }
 
     @Override
     protected void end() {
-        shooter.stopS();
+        Robot.shooter.stopS();
     }
     public ShooterShoot Stop() {
         isFinished = true;
