@@ -2,8 +2,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PIDOutput;
-//import edu.wpi.first.wpilibj.controller.PIDController;
-import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.controller.PIDController;
+//import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.VictorSP;
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -20,12 +20,12 @@ public class WheelDrive {
     public WheelDrive(int angleMotor, int speedMotor, int encoder) {
         this.angleMotor = new VictorSP(angleMotor);
         this.speedMotor = new VictorSP(speedMotor);
-        pidController = new PIDController(1, 0, 0, new AnalogInput(encoder), this.angleMotor);
-        //pidController = new PIDController (1.0, 0.0, 0.0);
-        pidController.setInputRange(-180, 180);
+        //pidController = new PIDController(1, 0, 0, new AnalogInput(encoder), this.angleMotor);
+        pidController = new PIDController (1.0, 0.0, 0.0);
+        /*pidController.setInputRange(-180, 180);
         pidController.setOutputRange(-1, 1);
         pidController.setContinuous();
-        pidController.enable();
+        pidController.enable();*/
     }
 
     public void drive(double speed, double angle){

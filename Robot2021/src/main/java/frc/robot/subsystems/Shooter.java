@@ -29,7 +29,7 @@ public class Shooter extends Subsystem {
     }
 
     public void shoot() {
-        shooter.set(VictorSPXControlMode.PercentOutput, 1.0);
+        shooter.set(VictorSPXControlMode.PercentOutput, 0.25);
     }
 
     public void stopS() {
@@ -37,23 +37,23 @@ public class Shooter extends Subsystem {
     }
 
     public void shootReverse() {
-        shooter.set(VictorSPXControlMode.PercentOutput, -1.0);
+        shooter.set(VictorSPXControlMode.PercentOutput, -0.25);
     }
     
     public void block() {
-        if (blockerEncoder.getDistance() < 0.25){
+        //if (blockerEncoder.getDistance() < 0.25){
             shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.1);
-        } else {
-            shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
-        }
+        //} else {
+            //shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
+        //}
     }
 
     public void unblock() {
-        if (blockerEncoder.getDistance() > 0){
+        //if (blockerEncoder.getDistance() > 0){
             shooterBlocker.set(VictorSPXControlMode.PercentOutput, -0.1);
-        } else {
-            shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
-        }
+        //} else {
+            //shooterBlocker.set(VictorSPXControlMode.PercentOutput, 0.0);
+        //}
     }
 
     public void blockS() {

@@ -56,8 +56,8 @@ public class OI {
     public static Joystick buttonBoard;
     public JoystickButton TowerExtend;
     public JoystickButton TowerRetract;
-    public JoystickButton Succ;
-    public JoystickButton Unsucc;
+    public JoystickButton Intake;
+    public JoystickButton RevIntake;
     public JoystickButton Shoot;
     public JoystickButton ShooterBlock;
     public JoystickButton ShooterUnblock;
@@ -79,40 +79,40 @@ public class OI {
         joystick = new Joystick(1);
         buttonBoard = new Joystick(0);
 
-        towerE = new TowerE();
+        //towerE = new TowerE();
         TowerExtend = new JoystickButton(buttonBoard, 1);
-        TowerExtend.whileHeld(towerE);
-        TowerExtend.whenReleased(towerE.Stop());
+        TowerExtend.whileHeld(new TowerE());
+        TowerExtend.whenReleased(new TowerE().Stop());
 
-        towerR = new TowerR();
+        //towerR = new TowerR();
         TowerRetract = new JoystickButton(buttonBoard, 2);
-        TowerRetract.whileHeld(towerR);
-        TowerRetract.whenReleased(towerR.Stop());
+        TowerRetract.whileHeld(new TowerR());
+        TowerRetract.whenReleased(new TowerR().Stop());
 
-        shooterShoot = new ShooterShoot();
+        //shooterShoot = new ShooterShoot();
         Shoot = new JoystickButton(buttonBoard, 3);
-        Shoot.whileHeld(shooterShoot);
-        Shoot.whenReleased(shooterShoot.Stop());
+        Shoot.whileHeld(new ShooterShoot());
+        Shoot.whenReleased(new ShooterShoot().Stop());
 
-        shooterBlock = new ShooterBlock();
+        //shooterBlock = new ShooterBlock();
         ShooterBlock = new JoystickButton(buttonBoard, 4);
-        ShooterBlock.whileHeld(shooterBlock);
-        ShooterBlock.whenReleased(shooterBlock.Stop());
+        ShooterBlock.whileHeld(new ShooterBlock());
+        ShooterBlock.whenReleased(new ShooterBlock().Stop());
 
-        shooterUnblock = new ShooterUnblock();
+        //shooterUnblock = new ShooterUnblock();
         ShooterUnblock = new JoystickButton(buttonBoard, 5);
-        ShooterUnblock.whileHeld(shooterUnblock);
-        ShooterUnblock.whenReleased(shooterUnblock.Stop());
+        ShooterUnblock.whileHeld(new ShooterUnblock());
+        ShooterUnblock.whenReleased(new ShooterUnblock().Stop());
 
-        shooterIntake = new ShooterIntake();
-        Succ = new JoystickButton(buttonBoard, 6);
-        Succ.whileHeld(shooterIntake);
-        Succ.whenReleased(shooterIntake.Stop());
+        //shooterIntake = new ShooterIntake();
+        Intake = new JoystickButton(buttonBoard, 6);
+        Intake.whileHeld(new ShooterIntake());
+        Intake.whenReleased(new ShooterIntake().Stop());
 
-        shooterRevIntake = new ShooterRevIntake();
-        Unsucc = new JoystickButton(buttonBoard, 7);
-        Unsucc.whileHeld(shooterRevIntake);
-        Unsucc.whenReleased(shooterRevIntake.Stop());
+        //shooterRevIntake = new ShooterRevIntake();
+        RevIntake = new JoystickButton(buttonBoard, 7);
+        RevIntake.whileHeld(new ShooterRevIntake());
+        RevIntake.whenReleased(new ShooterRevIntake().Stop());
 
 
         // SmartDashboard Buttons

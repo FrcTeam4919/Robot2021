@@ -7,7 +7,7 @@ import frc.robot.Robot;
 public class TowerR extends Command{
     private boolean isFinished = false;
     public TowerR(){
-        requires(Robot.towerRetract);
+        requires(Robot.towers);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class TowerR extends Command{
 
     @Override
     protected void execute() {
-        Robot.towerRetract.retract();
+        Robot.towers.retract();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class TowerR extends Command{
 
     @Override
     protected void end() {
-        Robot.towerRetract.stop();
+        Robot.towers.stop();
     }
     public TowerR Stop() {
         isFinished=true;
