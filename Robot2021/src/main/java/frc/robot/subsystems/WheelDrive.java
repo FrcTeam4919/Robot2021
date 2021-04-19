@@ -15,15 +15,15 @@ public class WheelDrive {
     private VictorSPX angleMotor;
     private VictorSPX speedMotor;
     private PIDController pidController;
-    private AnalogInput encoders;
+    public static Encoder m_encoder;
     // max voltage the swerve modules take
     private final double MAX_VOLTS = 12.0;
 
-    public WheelDrive(int angleMotor, int speedMotor, int encoder) {
+    public WheelDrive(int angleMotor, int speedMotor, int encoderChannelA, int encoderChannelB) {
         this.angleMotor = new VictorSPX(angleMotor);
         this.speedMotor = new VictorSPX(speedMotor);
         //pidController = new PIDController(1, 0, 0, new AnalogInput(encoder), this.angleMotor);
-        encoders = new AnalogInput(encoder);
+        m_encoder = new Encoder(encoderChannelA, encoderChannelB);
         pidController = new PIDController (1.0, 0.0, 0.0);
         /*pidController.setInputRange(-180, 180);
         pidController.setOutputRange(-1, 1);
@@ -41,6 +41,6 @@ public class WheelDrive {
             setpoint = setpoint - MAX_VOLTS;
         }
         pidController.setSetpoint(setpoint);
-        angleMotor.set(VictorSPXControlMode.PercentOutput, pidController.calculate(encoders.getAccumulatorCount(), setpoint));
+        angleMotor.set(VictorSPXControlMode.PercentOutput, pidController.calculate(m_encoder.getDistance(), setpoint));
     }
 }

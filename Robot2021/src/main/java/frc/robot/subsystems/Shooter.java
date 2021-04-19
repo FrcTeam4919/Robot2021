@@ -14,7 +14,7 @@ public class Shooter extends Subsystem {
     public Shooter() {
         shooter = new VictorSPX(13);
         shooterBlocker = new VictorSPX(14);
-        blockerEncoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
+        //blockerEncoder = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
     }
 
     @Override

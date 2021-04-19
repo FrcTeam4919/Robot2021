@@ -10,7 +10,9 @@ public class SwerveDrive {
     private WheelDrive frontLeft;
 
     public void drive(double x, double y, double z){
+        if (x==0 && y==0 && z==0){
 
+        } else {
         double r = Math.sqrt((L * L) + (W * W));
         y *= -1;
 
@@ -33,6 +35,7 @@ public class SwerveDrive {
         backLeft.drive(backLeftSpeed, backLeftAngle);
         frontRight.drive(frontRightSpeed, frontRightAngle);
         frontLeft.drive(frontLeftSpeed, frontLeftAngle);
+        }
     }
 
     public SwerveDrive (WheelDrive backRight, WheelDrive backLeft, WheelDrive frontRight, WheelDrive frontLeft){

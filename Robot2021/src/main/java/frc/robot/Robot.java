@@ -40,10 +40,10 @@ public class Robot extends TimedRobot {
     // constructors for the WheelDrive variables are arbitrary,
     // values inputted should match the real IDs of the
     // angle motor, speed motor, and angle encoder respectively
-    private WheelDrive backRight = new WheelDrive(7, 3, 5);
-    private WheelDrive backLeft = new WheelDrive(8, 4, 1);
-    private WheelDrive frontRight = new WheelDrive(5, 1, 7);
-    private WheelDrive frontLeft = new WheelDrive(6, 2, 3);
+    private WheelDrive backRight = new WheelDrive(7, 3, 4, 5);
+    private WheelDrive backLeft = new WheelDrive(8, 4, 0, 1);
+    private WheelDrive frontRight = new WheelDrive(5, 1, 6, 7);
+    private WheelDrive frontLeft = new WheelDrive(6, 2, 2, 3);
     private SwerveDrive swerveDrive;
     public static Towers towers;
     public static Intake intake;
@@ -140,5 +140,6 @@ public class Robot extends TimedRobot {
         x = correctErrors(x);
         z = correctErrors(z);
         swerveDrive.drive(x, y, z);
+        System.out.println(WheelDrive.m_encoder.getDistance());
     }
 }
