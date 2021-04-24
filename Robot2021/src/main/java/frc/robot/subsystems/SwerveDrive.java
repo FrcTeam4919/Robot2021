@@ -10,9 +10,6 @@ public class SwerveDrive {
     private WheelDrive frontLeft;
 
     public void drive(double x, double y, double z){
-        if (x==0 && y==0 && z==0){
-
-        } else {
         double r = Math.sqrt((L * L) + (W * W));
         y *= -1;
 
@@ -31,11 +28,17 @@ public class SwerveDrive {
         double frontRightAngle = Math.atan2(b, d) / Math.PI;
         double frontLeftAngle = Math.atan2(b, c) / Math.PI;
 
+        // backRight.drive(backRightSpeed, backRightAngle);
+        // backLeft.drive(backLeftSpeed, backLeftAngle);
+        // frontRight.drive(frontRightSpeed, frontRightAngle);
+        // frontLeft.drive(frontLeftSpeed, frontLeftAngle);
+
+        //TODO: Remove.  This sets all wheels to the same speed
         backRight.drive(backRightSpeed, backRightAngle);
-        backLeft.drive(backLeftSpeed, backLeftAngle);
-        frontRight.drive(frontRightSpeed, frontRightAngle);
-        frontLeft.drive(frontLeftSpeed, frontLeftAngle);
-        }
+        backLeft.drive(backRightSpeed, backLeftAngle);
+        frontRight.drive(backRightSpeed, frontRightAngle);
+        frontLeft.drive(backRightSpeed, frontLeftAngle);
+        
     }
 
     public SwerveDrive (WheelDrive backRight, WheelDrive backLeft, WheelDrive frontRight, WheelDrive frontLeft){

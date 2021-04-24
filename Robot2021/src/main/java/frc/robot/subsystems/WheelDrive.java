@@ -3,9 +3,12 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.controller.PIDController;
 //import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -24,6 +27,7 @@ public class WheelDrive {
         this.speedMotor = new VictorSPX(speedMotor);
         //pidController = new PIDController(1, 0, 0, new AnalogInput(encoder), this.angleMotor);
         m_encoder = new Encoder(encoderChannelA, encoderChannelB);
+        m_encoder.setDistancePerPulse(360);
         pidController = new PIDController (1.0, 0.0, 0.0);
         /*pidController.setInputRange(-180, 180);
         pidController.setOutputRange(-1, 1);
@@ -32,15 +36,16 @@ public class WheelDrive {
     }
 
     public void drive(double speed, double angle){
-        speedMotor.set(VictorSPXControlMode.PercentOutput, speed);
+        // speedMotor.set(VictorSPXControlMode.PercentOutput, speed);
+        angleMotor.set(VictorSPXControlMode.PercentOutput, speed/2);
         //System.out.println(encoders.getAccumulatorCount());
-        double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5);
+       /* double setpoint = angle * (MAX_VOLTS * 0.5) + (MAX_VOLTS * 0.5);
         if (setpoint < 0) {
             setpoint = MAX_VOLTS + setpoint;
         } else if (setpoint > MAX_VOLTS){
             setpoint = setpoint - MAX_VOLTS;
         }
         pidController.setSetpoint(setpoint);
-        angleMotor.set(VictorSPXControlMode.PercentOutput, pidController.calculate(m_encoder.getDistance(), setpoint));
+        angleMotor.set(VictorSPXControlMode.PercentOutput, pidController.calculate(m_encoder.getDistance(), setpoint));*/
     }
 }
